@@ -1,0 +1,132 @@
+:root {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #45badd;
+  background-image: url("robot.gif");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media screen and (min-width:62em) {
+  .container {
+    background-position: left center;
+  }
+}
+
+button {
+  padding: .6em .7em;
+  width: 10em;
+  height: 2.5em;
+  font-size: 1.2em;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  border-radius: .2em;
+  background-color: hsl(339deg 100% 63%);
+  color: white;
+  box-shadow: 0 .1em 1em .5em rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(95%);
+  box-shadow: 0 .1em 1em .4em rgba(0, 0, 0, 0.5);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 .1em 1em .5em rgba(0, 0, 0, 0.5);
+}
+
+/*点击按钮后*/
+button:disabled {
+  position: relative;
+  text-indent: 20em;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor:initial;
+}
+
+button:disabled::after {
+  content: ' ';
+  display: block;
+  position:absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 5px solid #07abcc;
+}
+
+
+
+@media screen and (min-width:62em) {
+  button {
+    box-shadow: 0 .1em 1em .2em rgba(0, 0, 0, 0.3);
+  }
+
+  button:hover {
+    filter: brightness(95%);
+    box-shadow: 0 .1em 1em .1em rgba(0, 0, 0, 0.3);
+  }
+  button:active {
+    transform: scale(0.98);
+    box-shadow: 0 .1em 1em .15em rgba(0, 0, 0, 0.3);
+  }
+}
+
+/*笑话加载*/
+button.is-loading::after {
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+/*笑话讲诉中*/
+button.is-speaking::after {
+  border-top-color: #07abcc;
+  animation: circle 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%,-50%) rotate(0deg); }
+  100% { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+@keyframes  circle{
+  0% {
+    transform: translate(-50%,-50%) scale(.5);
+    border-color: #07abcc;
+  }
+
+  50% {
+    transform: translate(-50%,-50%) scale(1.2);
+    border-color: #ff4284;
+  }
+
+  60% {
+    transform: translate(-50%,-50%) scale(1.2);
+    border-color: #ff4284;
+  }
+
+  100% {
+    transform: translate(-50%,-50%) scale(.5);
+    border-color: #07abcc;
+  }
+}
